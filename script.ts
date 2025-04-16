@@ -13,6 +13,16 @@ const contacts: Contact[] = [
 
   function renderContact() {
     const container = document.querySelector(".container")
+    let categories: { [key: string]: Contact[]} = {};
+
+    contacts.forEach(contact => {
+        if (!categories[contact.category]){
+            categories[contact.category] = [];
+        }
+        categories[contact.category].push(contact)
+    })
+    console.log(categories)
+
     contacts.forEach(contact => {
         let p = document.createElement('p')
         p.innerHTML = contact.name;
